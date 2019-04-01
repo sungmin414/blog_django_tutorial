@@ -7,7 +7,9 @@ from .views import cbv,fbv as views
 app_name = 'polls'
 
 urlpatterns_cbv = [
-    path('', cbv.IndexView.as_view(), name='index')
+    path('', cbv.IndexView.as_view(), name='index'),
+    path('<int:question_id>/', cbv.DetailView.as_view(), name='detail'),
+    path('<int:question_id>/vote/', cbv.VoteView.as_view(), name='vote'),
 ]
 
 urlpatterns = [
