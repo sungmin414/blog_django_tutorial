@@ -24,7 +24,9 @@ class Question(models.Model):
                 -> 게시한 지 1일이 지났다.
         :return:
         """
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
+        # return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
 
 class Choice(models.Model):
